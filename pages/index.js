@@ -1,65 +1,53 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import {getSeriesList} from '../lib/api'
 
-export default function Home() {
+export default function Home({list, seriesList}) {
+  const series = seriesList.series
+  const tales = seriesList.tales
   return (
-    <div className={styles.container}>
+    <>
+      {/* Head of Page */}
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Home Page</title>
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      {/* Body of Page */}
+      <section>
+        <div className="w-screen h-screen overflow-hidden flex items-center justify-center">
+          <div className="w-full max-w-5xl text-center">
+            <h1 className="mb-5 text-xl"><span className="uppercase">SCP Foundation</span><br/> [Project::Repository]</h1>
+            <div className="mb-5">
+              <p>SCP Archive</p>
+              <ul>
+                {series.map((s, index) => (
+                  <li key={'series-'+index} className="inline-block mx-1">
+                    <Link href={'/series/'+s.href}>
+                      <a className="inline-block p-1">{s.text}</a>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mb-5">
+              <p>Tales of SCP</p>
+              <ul>
+                {tales.map((s, index) => (
+                  <li key={'tale-'+index} className="inline-block mx-1">
+                    <a href={s.href} className="inline-block p-1">{s.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+      </section>
+    </>
   )
+}
+
+export async function getStaticProps() {
+  const seriesList = await getSeriesList()
+  return {
+    props: { seriesList }
+  }
 }

@@ -1,16 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	padding: 0;
+	margin: 0;
+	font-family: theme("fontFamily.mono");
+	background: radial-gradient(
+		circle,
+		theme("colors.gray.900") 0%,
+		theme("colors.gray.900") 50%,
+		#131414 75%,
+		#000000 100%
+	);
+	color: theme("colors.gray.100");
+	text-shadow: 0 0 3px theme("colors.gray.300");
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
+	color: theme("colors.green.600");
+	text-shadow: 0 0 3px theme("colors.green.800");
+}
+a:hover {
+	color: theme("colors.green.700");
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
