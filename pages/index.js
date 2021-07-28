@@ -2,9 +2,10 @@ import Head from 'next/head'
 import Link from 'next/link'
 import {getSeriesList} from '../lib/api'
 
-export default function Home({list, seriesList}) {
-  const series = seriesList.series
-  const tales = seriesList.tales
+export default function Home({seriesList}) {
+  const series = seriesList.series;
+  const tales = seriesList.tales;
+
   return (
     <>
       {/* Head of Page */}
