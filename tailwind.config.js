@@ -34,6 +34,10 @@ module.exports = {
         mono: '"Share Tech Mono", monospace'
       }
     },
+    container: {
+      padding: '2rem',
+      center: true,
+    },
   },
   variants: {
     extend: {},

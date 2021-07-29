@@ -18,6 +18,7 @@ body {
 		#131414 75%,
 		#000000 100%
 	);
+	background-attachment: fixed;
 	color: theme("colors.gray.100");
 	text-shadow: 0 0 3px theme("colors.gray.300");
 }
@@ -34,6 +35,19 @@ a:hover {
 
 * {
 	box-sizing: border-box;
+}
+
+/* Columns */
+
+.scp-list-columns {
+	column-count: 2;
+	column-gap: theme("spacing.8");
+}
+@screen lg {
+	.scp-list-columns {
+		column-count: 4;
+		column-gap: theme("spacing.8");
+	}
 }
 
 #nprogress {
