@@ -4,6 +4,16 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.gray.50'),
+            'h1, h2, h3, h4, h5': {
+              color: theme('colors.gray.50'),
+            },
+          },
+        },
+      }),
       colors: {
         gray: {
           '50': '#f5f6f5', 
@@ -42,5 +52,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
