@@ -1,11 +1,15 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import {getSeriesList} from '../lib/api'
+// import {getSeriesList} from '../lib/api'
+// import {series} from '../api/series.js';
+import series from '../api/series.json'
+import tales from '../api/tales.json'
 
-export default function Home({seriesList}) {
-  const series = seriesList.series;
-  const tales = seriesList.tales;
-
+export default function Home({series, tales}) {
+  // const series = seriesList.series;
+  // const tales = seriesList.tales;
+  // console.log(series);
+  
   return (
     <>
       {/* Head of Page */}
@@ -22,8 +26,8 @@ export default function Home({seriesList}) {
               <ul>
                 {series.map((s, index) => (
                   <li key={'series-'+index} className="inline-block mx-1">
-                    <Link href={'/series/'+s.href}>
-                      <a className="inline-block p-1">{s.text}</a>
+                    <Link href={'/series/'+s.slug}>
+                      <a className="inline-block p-1">{s.title}</a>
                     </Link>
                   </li>
                 ))}
@@ -34,7 +38,7 @@ export default function Home({seriesList}) {
               <ul>
                 {tales.map((s, index) => (
                   <li key={'tale-'+index} className="inline-block mx-1">
-                    <a href={s.href} className="inline-block p-1">{s.text}</a>
+                    <a href={s.slug} className="inline-block p-1">{s.title}</a>
                   </li>
                 ))}
               </ul>
@@ -47,8 +51,7 @@ export default function Home({seriesList}) {
 }
 
 export async function getStaticProps() {
-  const seriesList = await getSeriesList()
   return {
-    props: { seriesList }
+    props: { series, tales }
   }
 }

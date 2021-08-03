@@ -2,16 +2,15 @@ import Head from 'next/head'
 import Link from 'next/link'
 import {useState, useEffect} from 'react'
 // Api Request
-import {getSeriesList, getSeriesData} from '../../lib/api'
+// import {getSeriesData} from '../../lib/api'
+import series from '../../api/series.json';
+import tales from '../../api/tales.json';
 
-const Series = ({series, seriesList}) => {
+const Series = ({fileList, series, tales}) => {
   const [error, setError] = useState(false)
 
-  const archive = seriesList.series;
-  const tales = seriesList.tales;
-
   useEffect(() => {
-    if (series.error) {
+    if (fileList.error) {
       setError(true);
     }
   }, []);
@@ -47,7 +46,7 @@ const Series = ({series, seriesList}) => {
       <section>
         <div className="w-screen h-[400px] overflow-y-scroll flex items-center justify-center">
           <div className="w-full max-w-5xl text-center">
-            <h1 className="mb-5 text-xl"><span className="uppercase">{series.title}</span></h1>
+            <h1 className="mb-5 text-xl"><span className="uppercase">{fileList.title}</span></h1>
             <p>
               [<Link href="/">
                 <a>Home</a>
@@ -62,20 +61,20 @@ const Series = ({series, seriesList}) => {
               <div className="sticky top-[2rem]">
                 <p className="px-1">archive</p>
                 <ul className="mb-4">
-                  {archive.map((s, index) => (
+                  {series.map((s, index) => (
                     <li key={'series-'+index} className="inline-block mx-1">
-                      <Link href={'/series/'+s.href}>
-                        <a className="inline-block p-1">{s.text}</a>
+                      <Link href={'/series/'+s.slug}>
+                        <a className="inline-block p-1">{s.title}</a>
                       </Link>
                     </li>
                   ))}
                 </ul>
                 <p className="px-1">tales</p>
                 <ul className="mb-4">
-                  {archive.map((s, index) => (
+                  {tales.map((s, index) => (
                     <li key={'series-'+index} className="inline-block mx-1">
-                      <Link href={'/series/'+s.href}>
-                        <a className="inline-block p-1">{s.text}</a>
+                      <Link href={'/series/'+s.slug}>
+                        <a className="inline-block p-1">{s.title}</a>
                       </Link>
                     </li>
                   ))}
@@ -83,7 +82,7 @@ const Series = ({series, seriesList}) => {
               </div>
             </div>
             <ul className="relative max-w-lg">
-              {series.items.map(item => (
+              {fileList.items.map(item => (
                 <li key={item.slug} className="mb-4">
                   <Link href={`/files/${item.slug}`}><a>{item.title}</a></Link>
                 </li>
@@ -99,17 +98,16 @@ const Series = ({series, seriesList}) => {
 export default Series;
 
 export async function getStaticProps({ params }) {
-  const series = await getSeriesData(params.slug)
-  const seriesList = await getSeriesList()
+  // const fileList = await getSeriesData(params.slug)
+  const fileList = require('../../api/series/'+params.slug+'.json');
   return {
-    props: { series, seriesList }
+    props: { fileList, series, tales }
   }
 }
 
 export async function getStaticPaths() {
-  const allSeries = await getSeriesList()
   return {
-    paths: allSeries.series.map(s => `/series/${s.href}`) || [],
+    paths: series.map(s => `/series/${s.slug}`) || [],
     fallback: true,
   }
 }
