@@ -38,7 +38,7 @@ export default function Home({series, tales}) {
               <ul>
                 {tales.map((s, index) => (
                   <li key={'tale-'+index} className="inline-block mx-1">
-                    <a href={s.slug} className="inline-block p-1">{s.title}</a>
+                    <a href={`/tales/${s.slug}`} className="inline-block p-1">{s.title}</a>
                   </li>
                 ))}
               </ul>
