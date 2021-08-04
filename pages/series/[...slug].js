@@ -6,6 +6,9 @@ import {useState, useEffect} from 'react'
 import series from '../../api/series.json';
 import tales from '../../api/tales.json';
 
+// Components
+import Sidebar from '../../components/Sidebar';
+
 const Series = ({fileList, series, tales}) => {
   const [error, setError] = useState(false)
 
@@ -49,36 +52,17 @@ const Series = ({fileList, series, tales}) => {
             <h1 className="mb-5 text-xl"><span className="uppercase">{fileList.title}</span></h1>
             <p>
               [<Link href="/">
-                <a>Home</a>
+                <a>Root</a>
               </Link>]
             </p>
           </div>
         </div>
         <div className="container pb-20">
           {/* List out items */}
-          <div className="scp-list-wrap relative flex justify-center">
+          <div className="relative flex justify-center">
             <div className="relative w-full max-w-lg px-8 text-right">
               <div className="sticky top-[2rem]">
-                <p className="px-1">archive</p>
-                <ul className="mb-4">
-                  {series.map((s, index) => (
-                    <li key={'series-'+index} className="inline-block mx-1">
-                      <Link href={'/series/'+s.slug}>
-                        <a className="inline-block p-1">{s.title}</a>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-                <p className="px-1">tales</p>
-                <ul className="mb-4">
-                  {tales.map((s, index) => (
-                    <li key={'series-'+index} className="inline-block mx-1">
-                      <Link href={'/series/'+s.slug}>
-                        <a className="inline-block p-1">{s.title}</a>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                <Sidebar series={series} tales={tales} />
               </div>
             </div>
             <ul className="relative max-w-lg">

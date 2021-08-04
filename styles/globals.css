@@ -11,7 +11,8 @@ body {
 	padding: 0;
 	margin: 0;
 	font-family: theme("fontFamily.mono");
-	background: radial-gradient(
+	background-color: #131414;
+	background-image: radial-gradient(
 		circle,
 		theme("colors.gray.900") 0%,
 		theme("colors.gray.900") 50%,
@@ -20,14 +21,14 @@ body {
 	);
 	background-attachment: fixed;
 	color: theme("colors.gray.100");
-	text-shadow: 0 0 3px theme("colors.gray.300");
+	/* text-shadow: 0 0 3px theme("colors.gray.300"); */
 }
 
 a {
 	color: inherit;
 	text-decoration: none;
 	color: theme("colors.green.600");
-	text-shadow: 0 0 3px theme("colors.green.800");
+	/* text-shadow: 0 0 3px theme("colors.green.800"); */
 }
 a:hover {
 	color: theme("colors.green.700");

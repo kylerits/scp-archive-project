@@ -10,6 +10,9 @@ module.exports = {
             color: theme('colors.gray.50'),
             'h1, h2, h3, h4, h5': {
               color: theme('colors.gray.50'),
+              '&:first-of-type': {
+                marginTop: 0,
+              },
             },
           },
         },
