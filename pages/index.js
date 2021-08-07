@@ -33,7 +33,7 @@ export default function Home({series, tales}) {
                 ))}
               </ul>
             </div>
-            <div className="mb-5">
+            {/* <div className="mb-5">
               <p>Tales of SCP</p>
               <ul>
                 {tales.map((s, index) => (
@@ -42,7 +42,7 @@ export default function Home({series, tales}) {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

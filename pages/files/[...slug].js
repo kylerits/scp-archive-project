@@ -58,7 +58,7 @@ const File = ({series, file, fullSeries }) => {
       </Head>
       <section>
         <div className="w-screen h-[400px] overflow-y-scroll flex items-center justify-center">
-          <div className="w-full max-w-5xl">
+          <div className="w-full max-w-5xl p-8">
             {/* Title Grid */}
             <div className="border border-gray-50 grid grid-cols-2">
               {/* Title Cell */}
@@ -67,7 +67,7 @@ const File = ({series, file, fullSeries }) => {
               </div>
               {/* Class Cell */}
               <div className="py-2 px-3 border-r border-gray-50 col-span-1">
-                <p><span className="text-sm uppercase text-gray-300">Class: </span>{file.class ?? 'Redacted'}</p>
+                <p><span className="text-sm uppercase text-gray-300">Class: </span>{file.class && file.class.length > 0 ? file.class : (<span className="text-red-400 uppercase">Redacted</span>)}</p>
               </div>
               {/* Rating Cell */}
               <div className="py-2 px-3 col-span-1">
@@ -75,7 +75,7 @@ const File = ({series, file, fullSeries }) => {
               </div>
               {/* Warning Cell */}
               {file.warning ? (
-                <div className="py-2 px-3 border-t border-gray-50">
+                <div className="col-span-2 py-2 px-3 border-t border-gray-50 text-center text-red-400">
                   {file.warning}
                 </div>
               ) : null}
@@ -161,6 +161,12 @@ const File = ({series, file, fullSeries }) => {
                     <h3><span className="uppercase">Description Redacted</span></h3>
                   </div>
                 )} 
+                {/* Source */}
+                {file.source ? (
+                  <div className="pb-8">
+                    <p><a href={file.source} target="_blank" rel="noreferrer">View Source</a></p>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

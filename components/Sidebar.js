@@ -10,7 +10,7 @@ const Sidebar = ({series, tales}) => {
     <div className="scp-list-wrap">
 
       {/* Series */}
-      <p>series</p>
+      <p>all series</p>
       <ul className="mb-4">
         <li className="inline-block">[</li>
         {series.map((s, index) => (
@@ -24,7 +24,7 @@ const Sidebar = ({series, tales}) => {
       </ul>
 
       {/* Tales */}
-      <p>tales</p>
+      {/* <p>tales</p>
       <ul className="mb-4">
         <li className="inline-block">[</li>
         {tales.map((s, index) => (
@@ -35,7 +35,7 @@ const Sidebar = ({series, tales}) => {
           </li>
         ))}
         <li className="inline-block">]</li>
-      </ul>
+      </ul> */}
 
     </div> 
   );

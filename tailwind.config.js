@@ -14,6 +14,13 @@ module.exports = {
                 marginTop: 0,
               },
             },
+            a: {
+              color: theme('colors.green.500'),
+              transition: 'all 200ms',
+              '&:hover': {
+                color: theme('colors.green.600'),
+              },
+            },
           },
         },
       }),
