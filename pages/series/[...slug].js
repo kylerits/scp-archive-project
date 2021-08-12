@@ -68,7 +68,7 @@ const Series = ({fileList, series, tales}) => {
             <ul className="relative max-w-lg">
               {fileList.items.map(item => (
                 <li key={item.slug} className="mb-4">
-                  <Link href={`/files/${item.slug}`}><a>{item.title}</a></Link>
+                  <Link href={`/files/${item.slug}`}><a className="flex"><span className="flex-shrink-0">{item.title.split(' - ')[0]} - </span><span className="pl-2"> {item.title.split(' - ')[1]}</span></a></Link>
                 </li>
               ))}
             </ul>

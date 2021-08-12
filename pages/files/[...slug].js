@@ -62,8 +62,10 @@ const File = ({series, file, fullSeries }) => {
             {/* Title Grid */}
             <div className="border border-gray-50 grid grid-cols-2">
               {/* Title Cell */}
-              <div className="py-2 px-3 border-b border-gray-50 col-span-2">
+              <div className="py-2 px-3 border-b border-gray-50 col-span-2 flex items-start justify-between">
                 <h1 className="text-xl"><span className="uppercase">{file.item}</span> <span className="opacity-80">{title}</span></h1>
+                {/* Source */}
+                {file.source ? (<a href={file.source} className="text-sm uppercase py-1" target="_blank" rel="noreferrer">Source</a>) : null}
               </div>
               {/* Class Cell */}
               <div className="py-2 px-3 border-r border-gray-50 col-span-1">
@@ -160,13 +162,7 @@ const File = ({series, file, fullSeries }) => {
                   <div className="pb-8">
                     <h3><span className="uppercase">Description Redacted</span></h3>
                   </div>
-                )} 
-                {/* Source */}
-                {file.source ? (
-                  <div className="pb-8">
-                    <p><a href={file.source} target="_blank" rel="noreferrer">View Source</a></p>
-                  </div>
-                ) : null}
+                )}
               </div>
             </div>
           </div>
