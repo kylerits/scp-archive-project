@@ -47,7 +47,7 @@ const Series = ({fileList, series, tales}) => {
       </Head>
       {/* Body of Page */}
       <section>
-        <div className="w-screen h-[400px] overflow-y-scroll flex items-center justify-center">
+        <div className="w-screen h-[150px] py-8 lg:h-[400px] overflow-y-scroll flex items-center justify-center">
           <div className="w-full max-w-5xl text-center">
             <h1 className="mb-5 text-xl"><span className="uppercase">{fileList.title}</span></h1>
             <p>
@@ -59,8 +59,8 @@ const Series = ({fileList, series, tales}) => {
         </div>
         <div className="container pb-20">
           {/* List out items */}
-          <div className="relative flex justify-center">
-            <div className="relative w-full max-w-lg px-8 text-right">
+          <div className="relative flex justify-center flex-wrap lg:flex-nowrap">
+            <div className="relative w-full max-w-lg lg:px-8 lg:text-right">
               <div className="sticky top-[2rem]">
                 <Sidebar series={series} tales={tales} />
               </div>

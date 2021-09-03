@@ -57,7 +57,7 @@ const File = ({series, file, fullSeries }) => {
         <title>{file.item} | {title}</title>
       </Head>
       <section>
-        <div className="w-screen h-[400px] overflow-y-scroll flex items-center justify-center">
+        <div className="w-screen h-[400px] flex items-center justify-center">
           <div className="w-full max-w-5xl p-8">
             {/* Title Grid */}
             <div className="border border-gray-50 grid grid-cols-2">
@@ -88,10 +88,10 @@ const File = ({series, file, fullSeries }) => {
       </section>
       <section className="pb-20">
         <div className="container">
-          <div className="relative flex justify-center">
+          <div className="relative flex justify-center flex-wrap lg:flex-nowrap">
             {/* Navigation Column */}
-            <div className="relative w-full max-w-lg px-8 text-right">
-              <div className="sticky top-[2rem]">
+            <div className="relative w-full max-w-lg lg:px-8 text-left lg:text-right">
+              <div className="sticky top-[2rem] pb-12">
                 <p className="pb-4">
                   [ <Link href="/">
                     <a>Root</a>
