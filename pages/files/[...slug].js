@@ -185,6 +185,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   return {
     paths: fullSeries.map(f => `/files/${f.slug}`) || [],
+    // paths: [],
     fallback: true,
   }
 }
